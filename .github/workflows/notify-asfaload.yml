@@ -1,0 +1,14 @@
+name: Notify Asfaload of release
+on:
+  release:
+    types: [published]
+jobs:
+  notify-asfaload:
+    runs-on: ubuntu-latest
+    permissions:
+      # Required to get an OIDC token. Doesn't grant any write access.
+      # See https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/about-security-hardening-with-openid-connect#adding-permissions-settings
+      id-token: write
+    steps:
+      - name: Notify new release to Asfaload
+        uses: asfaload/notify-release-action@v0.1.0
